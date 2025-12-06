@@ -1,4 +1,4 @@
-//todo - Que 5 Remove duplicates in place from sorted array
+//todo - Que 5 Left rotate the array by K places 
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -14,30 +14,23 @@ void printArr(int arr[], int n) {
   cout << "\n";
 }
 
-void removeDuplicateInPlace(int *arr, int n) {
-  int i = 0, j = 0;
-  while(j < n) {
-    if(arr[i] == arr[j]) {
-      j++;
-    } 
-    else {
-      i++;
-      swap(arr[i], arr[j]);
-      j++;
-    }
-  }
+void leftRotateTheArrByKPlaces(int *arr, int n, int k) {
+  k = k % n;
+  reverse(arr, arr + k);
+  reverse(arr + k, arr + n);
+  reverse(arr, arr + n);
 }
-//* Time Complexity = O(n)
+//* Time Complexity = O(2n)
 //* Space Complexity = O(1)
 
 int main() {
-  int n;
-  cin >> n;
+  int n, k;
+  cin >> n >> k;
   int arr[n];
   for(int i = 0 ; i < n ; i++) {
     cin >> arr[i];
   }
   printArr(arr, n);
-  removeDuplicateInPlace(arr, n);
+  leftRotateTheArrByKPlaces(arr, n, k);
   printArr(arr, n);
 }

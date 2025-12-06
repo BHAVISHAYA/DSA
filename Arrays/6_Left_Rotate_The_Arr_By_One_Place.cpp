@@ -1,4 +1,4 @@
-//todo - Que 5 Remove duplicates in place from sorted array
+//todo - Que 5 Left rotate the array by one place 
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -14,18 +14,12 @@ void printArr(int arr[], int n) {
   cout << "\n";
 }
 
-void removeDuplicateInPlace(int *arr, int n) {
-  int i = 0, j = 0;
-  while(j < n) {
-    if(arr[i] == arr[j]) {
-      j++;
-    } 
-    else {
-      i++;
-      swap(arr[i], arr[j]);
-      j++;
-    }
+void leftRotateTheArrayByOnePlace(int *arr, int n) {
+  int temp = arr[0];
+  for(int i = 0 ; i < n  - 1 ; i++) {
+    arr[i] = arr[i + 1];
   }
+  arr[n - 1] = temp;
 }
 //* Time Complexity = O(n)
 //* Space Complexity = O(1)
@@ -38,6 +32,6 @@ int main() {
     cin >> arr[i];
   }
   printArr(arr, n);
-  removeDuplicateInPlace(arr, n);
+  leftRotateTheArrayByOnePlace(arr, n);
   printArr(arr, n);
 }
