@@ -22,6 +22,8 @@ bool isExist(int *arr, int n, int toFind) {
   }
   return false; 
 }
+//* Time Complexity = O(n)
+//* Space Complexity = O(1)
 
 int main() {
   int n, toFind;

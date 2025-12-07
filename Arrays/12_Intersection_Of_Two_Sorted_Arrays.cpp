@@ -1,4 +1,4 @@
-//todo - Que 10 Union of two sorted arrays 
+//todo - Que 12: Intersection ot two sorted arrays 
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -27,38 +27,26 @@ void printVector(vector<int> &arr) {
   cout << "\n";
 }
 
-vector<int> unionOfTwoSortedArrays(vector<int> &arr, vector<int> &brr) {
+vector<int> intersectionOfTwoSortedArrays(vector<int> &arr, vector<int> &brr) {
   vector<int> ans; 
   int i = 0, j = 0;
   while(i < arr.size() && j < brr.size()) {
-    if(arr[i] <= brr[j]) {
-      if(ans.size() == 0 || ans.back() != arr[i]) {
-        ans.push_back(arr[i]);
-      }
+    if(arr[i] < brr[j]) {
       i++;
-    } else {
-      if(ans.size() == 0 || ans.back() != brr[j]) {
-        ans.push_back(brr[j]);
-      }
+    } 
+    else if(arr[i] == brr[j]) {
+      ans.push_back(arr[i]);
+      i++;
+      j++;
+    } 
+    else {
       j++;
     }
   }
-  while(i < arr.size()) {
-    if(ans.size() == 0 || ans.back() != arr[i]) {
-      ans.push_back(arr[i]);
-    } 
-    i++;
-  }
-  while(j < brr.size()) {
-    if(ans.size() == 0 || ans.back() != brr[j]) {
-      ans.push_back(brr[j]);
-    }
-    j++;
-  }
-  return ans;
+  return ans; 
 }
-//* Time Complexity = O(n + m)
-//* Space Complexity = O(n + m) - for returning the answer and this will be the worst case complexity 
+//* Time Complexity = O(n + m) 
+//* Space Complexity = O(n + m), to return the answer and that will be the worst case 
 
 int main() {
   int n, m;
@@ -71,13 +59,13 @@ int main() {
   for(int i = 0 ; i < m ; i++) {
     cin >> brr[i];
   }
-  vector<int> ans = unionOfTwoSortedArrays(arr, brr);
+  vector<int> ans = intersectionOfTwoSortedArrays(arr, brr);
   cout << "1st ";
   printVector(arr);
 
   cout << "2nd ";
   printVector(brr);
 
-  cout << "Union of two ";
+  cout << "Intersection of two ";
   printVector(ans);
 }
