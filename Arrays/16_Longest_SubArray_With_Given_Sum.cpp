@@ -1,28 +1,25 @@
 //todo - Que: 16 Longest sub-array with given sum 
-//todo - Link (https://www.naukri.com/code360/problems/longest-subarray-with-sum-k_5713505)
+//todo - Link 1 (https://www.naukri.com/code360/problems/longest-subarray-with-sum-k_5713505)
+//todo - Link 2 (https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1)
 
 #include<bits/stdc++.h>
 using namespace std;
 
 //* This will works for both when array contains positive as well as negative numbers or zero also 
-int lenOfLongestSubArrWithSumK(int *arr, int n, int k) {
-  map<long long int, int> m;
+int lenOfLongestSubArrWithSumK(long long int *arr, long long int n, long long int k) {
+  map<long long int, long long int> m;
   long long int sum = 0, length = 0;
-  for(int i = 0 ; i < n ; i++) {
+  for(long long int i = 0 ; i < n ; i++) {
     sum += arr[i];
     if(m.find(sum) == m.end()) {
       m[sum] = i;
     }
     if(sum == k) {
-      if(length < i + 1) {
-        length = i + 1;
-      }
+      length = max(length, i + 1);
     }
     if(m.find(sum - k) != m.end()) {
-      int tempLen = i - m[sum - k];
-      if(length < tempLen) {
-        length = tempLen;
-      }
+      long long int tempLen = i - m[sum - k];
+      length = max(length, tempLen);
     }
   }
   return length;
@@ -32,9 +29,8 @@ int lenOfLongestSubArrWithSumK(int *arr, int n, int k) {
 
 
 //* If array contains only positives or zeros then we can use Two Pointer approach 
-int maxLenSubArrWithSumK(int *arr, int n, int k) {
-  int i = 0, j = 0;
-  long long int sum = 0, length = 0;
+int maxLenSubArrWithSumK(long long int *arr, long long int n, long long int k) {
+  long long int i = 0, j = 0, sum = 0, length = 0;
   while(j < n) {
     sum += arr[j];
     while(sum > k && i <= j) {
@@ -42,20 +38,20 @@ int maxLenSubArrWithSumK(int *arr, int n, int k) {
       i++;
     }
     if(sum == k) {
-      if(length < ( j - i + 1)) {
-        length = j - i + 1;
-      }
+      length = max(length, j - i + 1);
     }
     j++;
   }
   return length;
 }
+//* Time Complexity = O(2n)
+//* Space Complexity = O(1)
 
 int main() {
-  int n, k;
+  long long n, k;
   cin >> n >> k;
-  int arr[n];
-  for(int i = 0 ; i < n ; i++) {
+  long long arr[n];
+  for(long long int i = 0 ; i < n ; i++) {
     cin >> arr[i];
   }
   cout << "Length of longest sub-array with sum k = " << lenOfLongestSubArrWithSumK(arr, n, k) << endl;

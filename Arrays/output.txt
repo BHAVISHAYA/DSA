@@ -1,2 +1,2 @@
-Length of longest sub-array with sum k = 3
-Length = 3
+Indexes = 0 3
+2 3
