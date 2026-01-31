@@ -1,1 +1,1 @@
-Enter number of nodes and edges 
+1 2 6 1 3 4 7 9 5 8 
