@@ -1,3 +1,1 @@
-10
-10
-10
+Total fruits = 5
