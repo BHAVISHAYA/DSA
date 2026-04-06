@@ -1,1 +1,1 @@
-Total fruits = 5
+Length = 1

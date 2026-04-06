@@ -12,8 +12,10 @@ void dfs(int startNode, vector<int> &vis, vector<int> adj[]) {
   }
   return;
 }
-//* Space Complexity = O(N)
-//* Time Complexity = O
+//* Space Complexity = O(N) + O(N) + O(N) 
+//* At max we are visiting N nodes, Vis array of size N, Recursion stack space will take O(N)
+
+//* Time Complexity = O(N) + O(2E)
 
 int main() {
   int n, m; 

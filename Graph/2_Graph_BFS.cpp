@@ -5,7 +5,7 @@ using namespace std;
 void bfs(vector<int> adj[], int nodes) {
   vector<int> vis(nodes + 1, 0);
   queue<int> q;
-  q.push(1);
+  q.push(0);
   vis[0] = 1;
   while(!q.empty()) {
     int node = q.front();
